@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Price Calculator</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 320px;
+    padding: 25px;
+    border-radius: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #000;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #000;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+.result {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f5f5f5;
+    color: #000;
+    font-size: 15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>🧮 হিসাব</h2>
+
+    <input type="number" id="price" placeholder="প্রতি কেজির দাম (৳)">
+    <input type="number" id="gram" placeholder="কত গ্রাম">
+
+    <button onclick="calculate()">হিসাব করো</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculate() {
+    let price = parseFloat(document.getElementById('price').value);
+    let gram = parseFloat(document.getElementById('gram').value);
+
+    if (!price || !gram) {
+        document.getElementById('result').innerHTML = "⚠️ সঠিক তথ্য দিন";
+        return;
+    }
+
+    let total = (price / 1000) * gram;
+
+    document.getElementById('result').innerHTML =
+        `📦 ${gram} গ্রাম এর দাম = <b>৳${total.toFixed(2)}</b>`;
+}
+</script>
+
+</body>
+</html>
